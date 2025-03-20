@@ -1,5 +1,15 @@
-import React from 'react'
+import NavBar from './NavBar'
+import { Outlet } from 'react-router-dom'
 
 export default function App() {
-  return <h1>Hello</h1>
+  return (
+    <>
+      <div className="flexDiv">
+        <NavBar />
+        <div className="flex4">
+          <Outlet />
+        </div>
+      </div>
+    </>
+  )
 }

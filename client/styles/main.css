@@ -1,0 +1,44 @@
+body {
+  background-color: blanchedalmond;
+}
+
+.flexDiv {
+  display: flex;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.flex2 {
+  flex: 2;
+}
+
+.flex3 {
+  flex: 3;
+}
+
+.flex4 {
+  flex: 4;
+}
+
+.flex5 {
+  flex: 5;
+}
+
+.centerDiv {
+  width: 50%;
+  margin: auto;
+}
+
+.textAlignCenter {
+  text-align: center;
+}
+
+.marginAuto {
+  margin: auto;
+}
+
+.bb {
+  border: 1px solid black;
+}
