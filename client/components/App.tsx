@@ -5,7 +5,9 @@ export default function App() {
   return (
     <>
       <div className="flexDiv">
-        <NavBar />
+        <div className="flex1">
+          <NavBar />
+        </div>
         <div className="flex4">
           <Outlet />
         </div>
