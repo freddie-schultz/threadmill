@@ -8,7 +8,7 @@ export default function useCreateExercise() {
 
   return useMutation({
     mutationFn: async (newExercise: ExerciseData) => {
-      await request.post('/api/v1/exercises').send(newExercise)
+      await request.post(`/api/v1/exercises`).send(newExercise)
     },
     onSuccess: async () => {
       queryClient.invalidateQueries({

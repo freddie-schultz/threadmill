@@ -1,14 +1,12 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import request from 'superagent'
 
-import { WorkoutData } from '../../../models/workouts.ts'
-
-export default function useCreateWorkout() {
+export default function useDeleteWorkout() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: async (newWorkout: WorkoutData) => {
-      await request.post(`/api/v1/workouts`).send(newWorkout)
+    mutationFn: async (id: number) => {
+      await request.delete(`/api/v1/workouts/${id}`)
     },
     onSuccess: async () => {
       queryClient.invalidateQueries({
