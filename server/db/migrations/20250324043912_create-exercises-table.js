@@ -3,9 +3,13 @@
  * @returns { Promise<void> }
  */
 export function up(knex) {
-  return knex.schema.createTable('workouts', (table) => {
+  return knex.schema.createTable('exercises', (table) => {
     table.increments('id').primary()
     table.string('name')
+    table.integer('workout_id').references('workouts.id')
+    table.integer('reps')
+    table.integer('sets')
+    table.integer('weight')
   })
 }
 
@@ -14,5 +18,5 @@ export function up(knex) {
  * @returns { Promise<void> }
  */
 export function down(knex) {
-  return knex.schema.dropTable('workouts')
+  return knex.schema.dropTable('exercises')
 }
