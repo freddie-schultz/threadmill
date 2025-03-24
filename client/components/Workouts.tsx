@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom'
 import { Workout } from '../../models/workouts.ts'
-import { useWorkouts } from '../apis/api.ts'
+import { useWorkoutData, useWorkouts } from '../apis/api.ts'
 
 export default function Workouts() {
   const { data: workouts, isPending, error } = useWorkouts()
@@ -21,7 +22,11 @@ export default function Workouts() {
       <h2>Your Workouts</h2>
       <ul>
         {workouts.map((workout: Workout, i: number) => {
-          return <li key={`workoutIndex${i}`}>{workout.name}</li>
+          return (
+            <li key={`workoutIndex${i}`}>
+              <Link to={`/workouts/${workout.id}`}>{workout.name}</Link>
+            </li>
+          )
         })}
       </ul>
     </>

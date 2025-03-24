@@ -1,6 +1,8 @@
 import database from '../connection.ts'
 import { Workout, WorkoutData } from '../../../models/workouts.ts'
 
+// const workoutKeys = ['workout.id as id']
+
 export async function getAllWorkouts(): Promise<Workout[]> {
   const results = await database('workouts').select()
 
@@ -8,8 +10,15 @@ export async function getAllWorkouts(): Promise<Workout[]> {
 }
 
 export async function getWorkoutById(id: number): Promise<Workout> {
-  const results = await database('workouts').where('id', id).select().first()
+  const workout = await database('workouts').where('id', id).select().first()
 
+  const exercises = await database('exercises').where('exercises.workout_id', id).select()
+
+  const results = {
+    ...workout,
+    exercises,
+  }
+  console.log(results)
   return results as Workout
 }
 
