@@ -2,6 +2,10 @@ body {
   background-color: blanchedalmond;
 }
 
+.fontTektur {
+  font-family: Tektur, Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .flexDiv {
   display: flex;
 }
