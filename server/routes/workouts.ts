@@ -3,7 +3,6 @@ import express from 'express'
 import * as db from '../db/functions/workouts.ts'
 
 const router = express.Router()
-export default router
 
 router.get('/', async (req, res, next) => {
   try {
@@ -54,3 +53,5 @@ router.delete('/:id', async (req, res, next) => {
     next(error)
   }
 })
+
+export default router

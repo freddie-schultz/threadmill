@@ -5,7 +5,7 @@ export default function useWorkouts() {
   return useQuery({
     queryKey: ['workouts'],
     queryFn: async () => {
-      const response = await request.get(`/api/v1/workouts`)
+      const response = await request.get(`/api/v1/workouts/`)
       return response.body
     },
   })

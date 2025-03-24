@@ -5,10 +5,12 @@ export default function NavBar() {
   return (
     <div className="flex1">
       <ul>
-        {navBarElements.map((e) => {
+        {navBarElements.map((e, i) => {
           return (
-            <li>
-              <NavLink to={e.link}>{e.name}</NavLink>
+            <li key={`liIndex${i}`}>
+              <NavLink to={e.link} key={`navLinkIndex${i}`}>
+                {e.name}
+              </NavLink>
             </li>
           )
         })}
