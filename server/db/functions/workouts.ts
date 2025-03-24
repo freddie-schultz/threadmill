@@ -1,8 +1,6 @@
 import database from '../connection.ts'
 import { Workout, WorkoutData } from '../../../models/workouts.ts'
 
-// const workoutKeys = ['workout.id as id']
-
 export async function getAllWorkouts(): Promise<Workout[]> {
   const results = await database('workouts').select()
 
@@ -18,7 +16,7 @@ export async function getWorkoutById(id: number): Promise<Workout> {
     ...workout,
     exercises,
   }
-  console.log(results)
+
   return results as Workout
 }
 
