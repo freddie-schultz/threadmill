@@ -16,17 +16,17 @@ export async function getWorkoutById(id: number): Promise<Workout> {
 export async function addWorkout(newWorkout: WorkoutData): Promise<number> {
   const results = await database('workouts').insert(newWorkout)
 
-  return results[0]
+  return results[0] as number
 }
 
 export async function updateWorkout(id: number, updatedWorkout: WorkoutData): Promise<number> {
   const results = await database('workouts').where('id', id).update(updatedWorkout)
 
-  return results
+  return results as number
 }
 
 export async function deleteWorkout(id: number): Promise<number> {
   const results = await database('workouts').where('id', id).delete()
 
-  return results
+  return results as number
 }
