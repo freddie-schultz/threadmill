@@ -3,6 +3,11 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.workoutListButton {
+  cursor: pointer;
+  display: inline-block;
+}
+
 .detailsButton {
   cursor: pointer;
   font-family: Verdana, Geneva, Tahoma, sans-serif;

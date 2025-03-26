@@ -1,14 +1,15 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useWorkoutData } from '../apis/api'
 import { Exercise, ExerciseInWorkout } from '../../models/exercises'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import WorkoutDetailLine from './WorkoutDetailLine'
 
 export default function ViewWorkout() {
   const { id } = useParams()
   const { data: workout, isPending, error } = useWorkoutData(Number(id))
   const [showDetails, setShowDetails] = useState(false)
-  const [selectedWorkout, setSelectedWorkout] = useState(null)
+  const [selectedWorkout, setSelectedWorkout] = useState('')
+  const navigate = useNavigate()
 
   if (isPending) {
     return <p>Loading...</p>
@@ -23,22 +24,18 @@ export default function ViewWorkout() {
   }
 
   const toggleDetails = () => {
-    setSelectedWorkout(null)
+    setSelectedWorkout('')
     setShowDetails(!showDetails)
   }
 
-  const handleClickWorkout = (event) => {
-    console.log(event)
+  const handleClickWorkout = (event: { target: Element }) => {
+    const targetId = (event.target as Element).id
 
     if (showDetails) {
       return
     }
 
-    if (selectedWorkout === event.target.id) {
-      setSelectedWorkout(null)
-    } else {
-      setSelectedWorkout(event.target.id)
-    }
+    selectedWorkout === targetId ? setSelectedWorkout('') : setSelectedWorkout(targetId)
   }
 
   return (
@@ -46,7 +43,7 @@ export default function ViewWorkout() {
       <table>
         <tbody>
           <tr>
-            <td>
+            <td style={{ width: 400 }}>
               <h1>{workout.name}</h1>
             </td>
             <td>
@@ -62,7 +59,7 @@ export default function ViewWorkout() {
         {workout.exercises.map((e: ExerciseInWorkout, i: number) => {
           return (
             <div key={`div${e.id}`}>
-              <li key={`exercise${e.id}`} role="button" id={e.name} onClick={handleClickWorkout}>
+              <li id={e.name} className="workoutListButton" role="button" onClick={handleClickWorkout} key={`exercise${e.id}`}>
                 {e.name}
               </li>
               {(showDetails || selectedWorkout === e.name) && <WorkoutDetailLine {...e} key={`details${e.id}`} />}
