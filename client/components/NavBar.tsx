@@ -8,18 +8,20 @@ export default function NavBar() {
       <ul>
         {navBarElements.map((e, i) => {
           return (
-            <NavLink to={e.link} key={`navLinkIndex${i}`}>
-              {({ isActive }) => {
-                return isActive ? (
-                  <li className="liActive" key={`liIndex${i}`}>
-                    {e.name}
-                    {e.name === 'Workouts' && <NavBarWorkouts />}
-                  </li>
-                ) : (
-                  <li key={`liIndex${i}`}>{e.name}</li>
-                )
-              }}
-            </NavLink>
+            <li key={`liIndex${i}`}>
+              <NavLink to={e.link} key={`navLinkIndex${i}`}>
+                {({ isActive }) => {
+                  return isActive ? (
+                    <li className="liActive" key={`liIndex${i}`}>
+                      {e.name}
+                      {e.name === 'Workouts' && <NavBarWorkouts />}
+                    </li>
+                  ) : (
+                    <li key={`liIndex${i}`}>{e.name}</li>
+                  )
+                }}
+              </NavLink>
+            </li>
           )
         })}
       </ul>

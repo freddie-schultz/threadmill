@@ -38,6 +38,8 @@ export const seed = async function (knex) {
   // Deletes ALL existing entries
   await knex('exercise_in_workout').del()
   await knex('exercise_in_workout').insert(workout1)
+  await knex('exercise_in_workout').insert(workout2)
+  await knex('exercise_in_workout').insert(workout3)
 }
 
 //   await knex('exercises').insert([

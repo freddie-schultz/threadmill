@@ -1,4 +1,4 @@
-import { Exercise } from './exercises.ts'
+import { ExerciseInWorkout } from './exercises.ts'
 
 export interface WorkoutData {
   name: string
@@ -6,5 +6,8 @@ export interface WorkoutData {
 
 export interface Workout extends WorkoutData {
   id: number
-  exercises: Exercise[]
+}
+
+export interface WorkoutWithExercises extends Workout {
+  exercises: ExerciseInWorkout[]
 }

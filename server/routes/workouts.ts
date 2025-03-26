@@ -16,7 +16,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const id = Number(req.params.id)
-    const workout = await db.getWorkoutById(id)
+    const workout = await db.getWorkoutWithExercises(id)
     res.json(workout)
   } catch (error) {
     next(error)

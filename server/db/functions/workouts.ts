@@ -1,5 +1,15 @@
 import database from '../connection.ts'
-import { Workout, WorkoutData } from '../../../models/workouts.ts'
+import { Workout, WorkoutData, WorkoutWithExercises } from '../../../models/workouts.ts'
+
+const exerciseInWorkoutKeys = [
+  'exercises.name as name',
+  'exercise_in_workout.exercise_id as id',
+  'exercise_in_workout.workout_id as workoutId',
+  'exercise_in_workout.reps as reps',
+  'exercise_in_workout.sets as sets',
+  'exercise_in_workout.weight as weight',
+  'exercise_in_workout.break_time as breakTime',
+]
 
 export async function getAllWorkouts(): Promise<Workout[]> {
   const results = await database('workouts').select()
@@ -7,17 +17,21 @@ export async function getAllWorkouts(): Promise<Workout[]> {
   return results as Workout[]
 }
 
-export async function getWorkoutById(id: number): Promise<Workout> {
+export async function getWorkoutWithExercises(id: number): Promise<WorkoutWithExercises> {
   const workout = await database('workouts').where('id', id).select().first()
 
-  const exercises = await database('exercises').where('exercises.workout_id', id).select()
+  // const exercises = await database('exercises').where('exercises.workout_id', id).select()
+  const exercises = await database('exercise_in_workout')
+    .join('exercises', 'exercise_in_workout.exercise_id', '=', 'exercises.id')
+    .where('exercise_in_workout.workout_id', id)
+    .select(exerciseInWorkoutKeys)
 
   const results = {
     ...workout,
     exercises,
   }
 
-  return results as Workout
+  return results as WorkoutWithExercises
 }
 
 export async function addWorkout(newWorkout: WorkoutData): Promise<number> {
@@ -33,6 +47,7 @@ export async function updateWorkout(id: number, updatedWorkout: WorkoutData): Pr
 }
 
 export async function deleteWorkout(id: number): Promise<number> {
+  await database('exercise_in_workout').where('workout_id', id).delete()
   const results = await database('workouts').where('id', id).delete()
 
   return results as number
