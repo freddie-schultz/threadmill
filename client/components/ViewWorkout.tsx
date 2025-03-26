@@ -8,6 +8,7 @@ export default function ViewWorkout() {
   const { id } = useParams()
   const { data: workout, isPending, error } = useWorkoutData(Number(id))
   const [showDetails, setShowDetails] = useState(false)
+  const [selectedWorkout, setSelectedWorkout] = useState(null)
 
   if (isPending) {
     return <p>Loading...</p>
@@ -22,21 +23,49 @@ export default function ViewWorkout() {
   }
 
   const toggleDetails = () => {
+    setSelectedWorkout(null)
     setShowDetails(!showDetails)
+  }
+
+  const handleClickWorkout = (event) => {
+    console.log(event)
+
+    if (showDetails) {
+      return
+    }
+
+    if (selectedWorkout === event.target.id) {
+      setSelectedWorkout(null)
+    } else {
+      setSelectedWorkout(event.target.id)
+    }
   }
 
   return (
     <>
-      <h1>{workout.name}</h1>
-      <div className="divButton" role="button" onClick={toggleDetails}>
-        {showDetails ? 'Hide Details' : 'Show Details'}
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <h1>{workout.name}</h1>
+            </td>
+            <td>
+              <button>Start working out!</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div className="detailsButton" role="button" onClick={toggleDetails}>
+        {showDetails ? 'Hide All Details' : 'Show All Details'}
       </div>
       <ul>
         {workout.exercises.map((e: ExerciseInWorkout, i: number) => {
           return (
             <>
-              <li key={`exerciseIndex${i}`}>{e.name}</li>
-              {showDetails && <WorkoutDetailLine {...e} />}
+              <li key={`exercise${e.id}`} role="button" id={e.name} onClick={handleClickWorkout}>
+                {e.name}
+              </li>
+              {(showDetails || selectedWorkout === e.name) && <WorkoutDetailLine {...e} key={`details${e.id}`} />}
             </>
           )
         })}
