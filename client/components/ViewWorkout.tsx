@@ -61,12 +61,12 @@ export default function ViewWorkout() {
       <ul>
         {workout.exercises.map((e: ExerciseInWorkout, i: number) => {
           return (
-            <>
+            <div key={`div${e.id}`}>
               <li key={`exercise${e.id}`} role="button" id={e.name} onClick={handleClickWorkout}>
                 {e.name}
               </li>
               {(showDetails || selectedWorkout === e.name) && <WorkoutDetailLine {...e} key={`details${e.id}`} />}
-            </>
+            </div>
           )
         })}
       </ul>
