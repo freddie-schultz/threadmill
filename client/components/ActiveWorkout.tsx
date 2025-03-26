@@ -8,16 +8,22 @@ export default function ActiveWorkout(props: WorkoutWithExercises) {
     <table>
       <tbody>
         {props.exercises.map((exercise) => {
-          const sets = Array(exercise.sets).fill(null)
-
           if (exercise.id !== activeExercise) {
-            return
+            return (
+              <tr>
+                <td>{exercise.name}</td>
+              </tr>
+            )
           }
+
+          const sets = Array(exercise.sets).fill(null)
 
           return (
             <tr key={exercise.id}>
               <table>
-                <tr>{exercise.name}</tr>
+                <tr>
+                  <td>{exercise.name}</td>
+                </tr>
                 {sets.map((e, i) => {
                   return (
                     <>

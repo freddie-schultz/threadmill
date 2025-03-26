@@ -3,6 +3,18 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+/* table {
+  border: 1px solid blue;
+}
+
+tr {
+  border: 1px solid red;
+} */
+
+td {
+  border: 1px solid black;
+}
+
 .workoutListButton {
   cursor: pointer;
   display: inline-block;
