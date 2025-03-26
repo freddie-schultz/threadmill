@@ -1,5 +1,31 @@
 body {
-  background-color: blanchedalmond;
+  background-color: rgb(206, 212, 240);
+}
+
+a {
+  text-decoration-line: none;
+  color: blue;
+}
+
+a.visited {
+  color: blue;
+}
+
+a.active {
+  font-weight: bold;
+}
+
+li {
+  padding: 3px 0 3px 0;
+}
+
+ul {
+  list-style-type: circle;
+}
+
+.liActive {
+  font-weight: bold;
+  list-style-type: disc;
 }
 
 .fontTektur {
