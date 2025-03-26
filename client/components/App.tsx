@@ -8,7 +8,7 @@ export default function App() {
         <div className="flex1">
           <NavBar />
         </div>
-        <div className="flex4">
+        <div className="flex4 appOutlet">
           <Outlet />
         </div>
       </div>

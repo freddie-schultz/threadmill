@@ -1,10 +1,5 @@
 export interface ExerciseData {
   name: string
-
-  // workoutId: number
-  // reps: number
-  // sets: number
-  // weight: number
 }
 
 export interface Exercise extends ExerciseData {
@@ -17,4 +12,5 @@ export interface ExerciseInWorkout extends Exercise {
   reps: number
   weight: number
   breakTime: number
+  timed: boolean
 }

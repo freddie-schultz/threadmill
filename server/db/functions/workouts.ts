@@ -9,6 +9,7 @@ const exerciseInWorkoutKeys = [
   'exercise_in_workout.sets as sets',
   'exercise_in_workout.weight as weight',
   'exercise_in_workout.break_time as breakTime',
+  'exercises.timed as timed',
 ]
 
 export async function getAllWorkouts(): Promise<Workout[]> {
