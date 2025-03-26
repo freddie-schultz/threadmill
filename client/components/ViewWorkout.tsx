@@ -3,12 +3,13 @@ import { useWorkoutData } from '../apis/api'
 import { Exercise, ExerciseInWorkout } from '../../models/exercises'
 import React, { useState } from 'react'
 import WorkoutDetailLine from './WorkoutDetailLine'
+import ViewWorkoutList from './ViewWorkoutList'
 
 export default function ViewWorkout() {
   const { id } = useParams()
   const { data: workout, isPending, error } = useWorkoutData(Number(id))
-  const [showDetails, setShowDetails] = useState(false)
-  const [selectedWorkout, setSelectedWorkout] = useState('')
+  // const [showDetails, setShowDetails] = useState(false)
+  // const [selectedWorkout, setSelectedWorkout] = useState('')
   const navigate = useNavigate()
 
   if (isPending) {
@@ -23,20 +24,20 @@ export default function ViewWorkout() {
     return <p>No data</p>
   }
 
-  const toggleDetails = () => {
-    setSelectedWorkout('')
-    setShowDetails(!showDetails)
-  }
+  // const toggleDetails = () => {
+  //   setSelectedWorkout('')
+  //   setShowDetails(!showDetails)
+  // }
 
-  const handleClickWorkout = (event: { target: Element }) => {
-    const targetId = (event.target as Element).id
+  // const handleClickWorkout = (event: { target: Element }) => {
+  //   const targetId = (event.target as Element).id
 
-    if (showDetails) {
-      return
-    }
+  //   if (showDetails) {
+  //     return
+  //   }
 
-    selectedWorkout === targetId ? setSelectedWorkout('') : setSelectedWorkout(targetId)
-  }
+  //   selectedWorkout === targetId ? setSelectedWorkout('') : setSelectedWorkout(targetId)
+  // }
 
   return (
     <>
@@ -52,7 +53,8 @@ export default function ViewWorkout() {
           </tr>
         </tbody>
       </table>
-      <div className="detailsButton" role="button" onClick={toggleDetails}>
+      <ViewWorkoutList {...workout} />
+      {/* <div className="detailsButton" role="button" onClick={toggleDetails}>
         {showDetails ? 'Hide All Details' : 'Show All Details'}
       </div>
       <ul>
@@ -66,7 +68,7 @@ export default function ViewWorkout() {
             </div>
           )
         })}
-      </ul>
+      </ul> */}
     </>
   )
 }
