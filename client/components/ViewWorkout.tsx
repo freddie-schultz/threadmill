@@ -1,16 +1,14 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useWorkoutData } from '../apis/api'
-import { Exercise, ExerciseInWorkout } from '../../models/exercises'
-import React, { useState } from 'react'
-import WorkoutDetailLine from './WorkoutDetailLine'
 import ViewWorkoutList from './ViewWorkoutList'
+import { useState } from 'react'
+import ActiveWorkout from './ActiveWorkout'
 
 export default function ViewWorkout() {
   const { id } = useParams()
   const { data: workout, isPending, error } = useWorkoutData(Number(id))
-  // const [showDetails, setShowDetails] = useState(false)
-  // const [selectedWorkout, setSelectedWorkout] = useState('')
-  const navigate = useNavigate()
+  const [workoutActive, setWorkoutActive] = useState(false)
+  // const navigate = useNavigate()
 
   if (isPending) {
     return <p>Loading...</p>
@@ -24,20 +22,9 @@ export default function ViewWorkout() {
     return <p>No data</p>
   }
 
-  // const toggleDetails = () => {
-  //   setSelectedWorkout('')
-  //   setShowDetails(!showDetails)
-  // }
-
-  // const handleClickWorkout = (event: { target: Element }) => {
-  //   const targetId = (event.target as Element).id
-
-  //   if (showDetails) {
-  //     return
-  //   }
-
-  //   selectedWorkout === targetId ? setSelectedWorkout('') : setSelectedWorkout(targetId)
-  // }
+  const toggleWorkoutActive = () => {
+    setWorkoutActive(!workoutActive)
+  }
 
   return (
     <>
@@ -48,27 +35,12 @@ export default function ViewWorkout() {
               <h1>{workout.name}</h1>
             </td>
             <td>
-              <button>Start working out!</button>
+              <button onClick={toggleWorkoutActive}>{`${workoutActive ? 'Stop' : 'Start'} working out!`}</button>
             </td>
           </tr>
         </tbody>
       </table>
-      <ViewWorkoutList {...workout} />
-      {/* <div className="detailsButton" role="button" onClick={toggleDetails}>
-        {showDetails ? 'Hide All Details' : 'Show All Details'}
-      </div>
-      <ul>
-        {workout.exercises.map((e: ExerciseInWorkout, i: number) => {
-          return (
-            <div key={`div${e.id}`}>
-              <li id={e.name} className="workoutListButton" role="button" onClick={handleClickWorkout} key={`exercise${e.id}`}>
-                {e.name}
-              </li>
-              {(showDetails || selectedWorkout === e.name) && <WorkoutDetailLine {...e} key={`details${e.id}`} />}
-            </div>
-          )
-        })}
-      </ul> */}
+      {workoutActive ? <ActiveWorkout {...workout} /> : <ViewWorkoutList {...workout} />}
     </>
   )
 }
