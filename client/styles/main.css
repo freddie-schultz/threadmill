@@ -15,6 +15,10 @@ td {
   border: 1px solid black;
 }
 
+div {
+  /* border: 1px solid red; */
+}
+
 .workoutListButton {
   cursor: pointer;
   display: inline-block;
@@ -110,12 +114,16 @@ ul {
 }
 
 .pageFooter {
+  text-align: center;
   position: fixed;
   bottom: 0px;
   width: 100%;
   height: 20px;
   padding: 7px 0px 5px 0px;
   margin-left: 0px;
+  margin-right: 0px;
   background-color: rgb(66, 214, 66);
   border-top: 1px solid green;
+  border-right: 1px solid green;
+  border-left: 1px solid green;
 }

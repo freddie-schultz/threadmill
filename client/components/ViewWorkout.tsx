@@ -28,7 +28,7 @@ export default function ViewWorkout() {
 
   return (
     <>
-      <table>
+      {/* <table>
         <tbody>
           <tr>
             <td style={{ width: 400 }}>
@@ -39,7 +39,17 @@ export default function ViewWorkout() {
             </td>
           </tr>
         </tbody>
-      </table>
+      </table> */}
+
+      <div className="flexDiv" style={{ alignItems: 'center' }}>
+        <div style={{ width: 400 }}>
+          <h1>{workout.name}</h1>
+        </div>
+        <div>
+          <button onClick={toggleWorkoutActive}>{`${workoutActive ? 'Stop' : 'Start'} working out!`}</button>
+        </div>
+      </div>
+
       {workoutActive ? <ActiveWorkout {...workout} /> : <ViewWorkoutList {...workout} />}
     </>
   )
