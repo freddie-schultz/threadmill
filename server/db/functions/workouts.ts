@@ -85,3 +85,11 @@ export async function updateExerciseInWorkout(data: NewExercise): Promise<number
 
   return results as number
 }
+
+export async function addExerciseToWorkout(data: NewExercise): Promise<number> {
+  const newExercise = convertNewExerciseToSnakeCase(data)
+
+  const results = await database('exercise_in_workout').insert(newExercise)
+
+  return results[0] as number
+}

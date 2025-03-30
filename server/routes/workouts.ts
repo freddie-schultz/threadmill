@@ -23,6 +23,16 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
+router.post('/add-exercise', async (req, res, next) => {
+  try {
+    const newExercise = req.body
+    const response = await db.addExerciseToWorkout(newExercise)
+    res.status(201).json(response)
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.post('/', async (req, res, next) => {
   try {
     const newWorkout = req.body

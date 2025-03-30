@@ -2,17 +2,30 @@ import { useState } from 'react'
 import { ExerciseInWorkout, NewExercise } from '../../models/exercises'
 import { WorkoutWithExercises } from '../../models/workouts'
 import WorkoutDetailLine from './WorkoutDetailLine'
-import { useDeleteExercise, useDeleteExerciseInWorkout, useEditExerciseInWorkout } from '../apis/api'
+import {
+  useCreateExerciseInWorkout,
+  useDeleteExercise,
+  useDeleteExerciseInWorkout,
+  useEditExerciseInWorkout,
+  useExercises,
+} from '../apis/api'
+import AddExerciseToWorkout from './AddExerciseToWorkout'
 
 export default function ViewWorkoutList(props: WorkoutWithExercises) {
   const [showDetails, setShowDetails] = useState(false)
   const [selectedWorkout, setSelectedWorkout] = useState('')
+  const [showAddExerciseForm, setShowAddExerciseForm] = useState(false)
   const deleteExercise = useDeleteExerciseInWorkout(props.id)
   const editExercise = useEditExerciseInWorkout()
+  const addExercise = useCreateExerciseInWorkout()
 
   const toggleDetails = () => {
     setSelectedWorkout('')
     setShowDetails(!showDetails)
+  }
+
+  const toggleAddExerciseForm = () => {
+    setShowAddExerciseForm(!showAddExerciseForm)
   }
 
   const handleClickWorkout = (event: React.MouseEvent<HTMLLIElement>) => {
@@ -31,6 +44,11 @@ export default function ViewWorkoutList(props: WorkoutWithExercises) {
 
   const handleEdit = (data: NewExercise) => {
     editExercise.mutate(data)
+  }
+
+  const handleAddExercise = (data: NewExercise) => {
+    addExercise.mutate(data)
+    setShowAddExerciseForm(false)
   }
 
   return (
@@ -58,6 +76,9 @@ export default function ViewWorkoutList(props: WorkoutWithExercises) {
           )
         })}
       </ul>
+      <button onClick={toggleAddExerciseForm}>{showAddExerciseForm ? 'Cancel' : 'Add New Exercise'}</button>
+
+      {showAddExerciseForm && <AddExerciseToWorkout workoutId={props.id} handleAddExercise={handleAddExercise} />}
     </>
   )
 }
