@@ -1,6 +1,7 @@
 body {
   background-color: rgb(206, 212, 240);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1vw;
 }
 
 /* table {
@@ -12,11 +13,23 @@ tr {
 } */
 
 td {
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 div {
   /* border: 1px solid red; */
+}
+
+.workoutDetailText {
+  font-size: 0.8vw;
+}
+
+.headerText {
+  font-size: 4vw;
+}
+
+.navBarText {
+  font-size: 1.5vw;
 }
 
 .workoutListButton {

@@ -54,4 +54,15 @@ router.delete('/:id', async (req, res, next) => {
   }
 })
 
+router.delete('/:workoutId/exercises/:exerciseId', async (req, res, next) => {
+  try {
+    const workoutId = Number(req.params.workoutId)
+    const exerciseId = Number(req.params.exerciseId)
+    const response = await db.deleteExerciseInWorkout(workoutId, exerciseId)
+    res.status(204).json(response)
+  } catch (error) {
+    next(error)
+  }
+})
+
 export default router

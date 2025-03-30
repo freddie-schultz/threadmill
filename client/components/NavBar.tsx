@@ -23,7 +23,7 @@ export default function NavBar() {
   // )
 
   return (
-    <div className="flex1">
+    <div className="flex1 navBarText">
       <ul>
         {navBarElements.map((e, i) => {
           return (

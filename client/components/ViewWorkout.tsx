@@ -1,5 +1,5 @@
-import { useParams } from 'react-router-dom'
-import { useWorkoutData } from '../apis/api'
+import { Link, useParams } from 'react-router-dom'
+import { useDeleteExercise, useWorkoutData } from '../apis/api'
 import ViewWorkoutList from './ViewWorkoutList'
 import { useState } from 'react'
 import ActiveWorkout from './ActiveWorkout'
@@ -43,6 +43,7 @@ export default function ViewWorkout() {
 
       <div className="flexDiv" style={{ alignItems: 'center' }}>
         <div style={{ width: 400 }}>
+          <Link to="/workouts">Back</Link>
           <h1>{workout.name}</h1>
         </div>
         <div>

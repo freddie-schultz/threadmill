@@ -53,3 +53,12 @@ export async function deleteWorkout(id: number): Promise<number> {
 
   return results as number
 }
+
+export async function deleteExerciseInWorkout(workoutId: number, exerciseId: number): Promise<number> {
+  const results = await database('exercise_in_workout')
+    .where('exercise_in_workout.workout_id', workoutId)
+    .andWhere('exercise_in_workout.exercise_id', exerciseId)
+    .delete()
+
+  return results
+}
