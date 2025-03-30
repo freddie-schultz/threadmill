@@ -1,5 +1,6 @@
 import database from '../connection.ts'
 import { Workout, WorkoutData, WorkoutWithExercises } from '../../../models/workouts.ts'
+import { ExerciseInWorkout, NewExercise } from '../../../models/exercises.ts'
 
 const exerciseInWorkoutKeys = [
   'exercises.name as name',
@@ -11,6 +12,17 @@ const exerciseInWorkoutKeys = [
   'exercise_in_workout.break_time as breakTime',
   'exercises.timed as timed',
 ]
+
+function convertNewExerciseToSnakeCase(data: NewExercise) {
+  return {
+    workout_id: data.workoutId,
+    exercise_id: data.exerciseId,
+    sets: data.sets,
+    reps: data.reps,
+    weight: data.weight,
+    break_time: data.breakTime,
+  }
+}
 
 export async function getAllWorkouts(): Promise<Workout[]> {
   const results = await database('workouts').select()
@@ -60,5 +72,16 @@ export async function deleteExerciseInWorkout(workoutId: number, exerciseId: num
     .andWhere('exercise_in_workout.exercise_id', exerciseId)
     .delete()
 
-  return results
+  return results as number
+}
+
+export async function updateExerciseInWorkout(data: NewExercise): Promise<number> {
+  const newExercise = convertNewExerciseToSnakeCase(data)
+
+  const results = await database('exercise_in_workout')
+    .where('exercise_in_workout.workout_id', data.workoutId)
+    .andWhere('exercise_in_workout.exercise_id', data.exerciseId)
+    .update(newExercise)
+
+  return results as number
 }

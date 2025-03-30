@@ -14,3 +14,14 @@ export interface ExerciseInWorkout extends Exercise {
   breakTime: number
   timed: boolean
 }
+
+export interface NewExerciseData {
+  sets: number
+  reps: number
+  weight: number
+  breakTime: number
+}
+export interface NewExercise extends NewExerciseData {
+  workoutId: number
+  exerciseId: number
+}

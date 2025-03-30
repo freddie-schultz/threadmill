@@ -1,13 +1,14 @@
 import { useState } from 'react'
-import { ExerciseInWorkout } from '../../models/exercises'
+import { ExerciseInWorkout, NewExercise } from '../../models/exercises'
 import { WorkoutWithExercises } from '../../models/workouts'
 import WorkoutDetailLine from './WorkoutDetailLine'
-import { useDeleteExercise, useDeleteExerciseInWorkout } from '../apis/api'
+import { useDeleteExercise, useDeleteExerciseInWorkout, useEditExerciseInWorkout } from '../apis/api'
 
 export default function ViewWorkoutList(props: WorkoutWithExercises) {
   const [showDetails, setShowDetails] = useState(false)
   const [selectedWorkout, setSelectedWorkout] = useState('')
   const deleteExercise = useDeleteExerciseInWorkout(props.id)
+  const editExercise = useEditExerciseInWorkout()
 
   const toggleDetails = () => {
     setSelectedWorkout('')
@@ -26,6 +27,10 @@ export default function ViewWorkoutList(props: WorkoutWithExercises) {
 
   const handleDelete = async (id: number) => {
     deleteExercise.mutateAsync(id)
+  }
+
+  const handleEdit = (data: NewExercise) => {
+    editExercise.mutate(data)
   }
 
   return (
@@ -47,7 +52,7 @@ export default function ViewWorkoutList(props: WorkoutWithExercises) {
                 {e.name}
               </li>
               {(showDetails || selectedWorkout === e.name) && (
-                <WorkoutDetailLine {...{ ...e, handleDelete }} key={`details${e.id}`} />
+                <WorkoutDetailLine {...{ ...e, handleDelete, handleEdit }} key={`details${e.id}`} />
               )}
             </div>
           )

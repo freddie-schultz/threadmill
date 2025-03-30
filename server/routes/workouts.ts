@@ -33,6 +33,20 @@ router.post('/', async (req, res, next) => {
   }
 })
 
+router.patch('/edit-exercise', async (req, res, next) => {
+  try {
+    // const workoutId = Number(req.params.workoutId)
+    // const exerciseId = Number(req.params.exerciseId)
+
+    // const newExercise = { ...req.body, workoutId, exerciseId }
+
+    const response = await db.updateExerciseInWorkout(req.body)
+    res.status(204).json(response)
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.patch('/:id', async (req, res, next) => {
   try {
     const id = Number(req.params.id)
