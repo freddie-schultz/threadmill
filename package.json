@@ -12,7 +12,14 @@
     "test": "vitest",
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'",
+    "sqlite3": "^5.1.7",
+    "superagent": "^10.2.0",
+    "react": "^19.0.0",
+    "react-router-dom": "^7.3.0",
+    
+    "tsx": "^4.19.3",
+    "node": "^20.19.0"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.68.0",
