@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom'
-import { Workout } from '../../models/workouts.ts'
-import { useWorkoutData, useWorkouts } from '../apis/api.ts'
+import { Workout, WorkoutData } from '../../models/workouts.ts'
+import { useCreateWorkout, useWorkoutData, useWorkouts } from '../apis/api.ts'
+import { useState } from 'react'
+import AddWorkoutForm from './AddWorkoutForm.tsx'
 
 export default function Workouts() {
   const { data: workouts, isPending, error } = useWorkouts()
+  const [showAddWorkoutForm, setShowAddWorkoutForm] = useState(false)
+  const addWorkout = useCreateWorkout()
 
   if (isPending) {
     return <p>Loading...</p>
@@ -15,6 +19,15 @@ export default function Workouts() {
 
   if (!workouts) {
     return <p>No data</p>
+  }
+
+  const toggleShowAddWorkoutForm = () => {
+    setShowAddWorkoutForm(!showAddWorkoutForm)
+  }
+
+  const handleAddWorkout = (data: WorkoutData) => {
+    addWorkout.mutate(data)
+    setShowAddWorkoutForm(false)
   }
 
   return (
@@ -29,6 +42,8 @@ export default function Workouts() {
           )
         })}
       </ul>
+      <button onClick={toggleShowAddWorkoutForm}>{showAddWorkoutForm ? 'Cancel' : 'Add workout'}</button>
+      {showAddWorkoutForm && <AddWorkoutForm handleAddWorkout={handleAddWorkout} />}
     </>
   )
 }
