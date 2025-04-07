@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useExercises } from '../apis/api'
 import { Exercise, NewExercise } from '../../models/exercises'
-import useCreateExerciseInWorkout from '../apis/hooks/use-create-exercise-in-workout'
 import { Box, Button, Flex, FormControl, FormLabel, Input, Select } from '@chakra-ui/react'
 
 interface Props {

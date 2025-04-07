@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useCreateWorkout } from '../apis/api'
 import { WorkoutData } from '../../models/workouts'
-import { prependOnceListener } from 'process'
 import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
 
 interface Props {

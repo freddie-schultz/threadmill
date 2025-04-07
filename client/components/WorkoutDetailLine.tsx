@@ -1,6 +1,5 @@
 import { E } from 'vitest/dist/chunks/reporters.d.CqBhtcTq.js'
 import { ExerciseInWorkout, NewExercise } from '../../models/exercises'
-import { useDeleteExercise } from '../apis/api'
 import React, { useState } from 'react'
 
 interface Props extends ExerciseInWorkout {

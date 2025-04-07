@@ -1,14 +1,8 @@
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import { ExerciseInWorkout, NewExercise } from '../../models/exercises'
 import { WorkoutWithExercises } from '../../models/workouts'
 import WorkoutDetailLine from './WorkoutDetailLine'
-import {
-  useCreateExerciseInWorkout,
-  useDeleteExercise,
-  useDeleteExerciseInWorkout,
-  useEditExerciseInWorkout,
-  useExercises,
-} from '../apis/api'
+import { useCreateExerciseInWorkout, useDeleteExerciseInWorkout, useEditExerciseInWorkout } from '../apis/api'
 import AddExerciseToWorkout from './AddExerciseToWorkout'
 import { Box, Button, Flex, ListItem, UnorderedList } from '@chakra-ui/react'
 

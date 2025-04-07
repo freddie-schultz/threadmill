@@ -1,8 +1,7 @@
 import navBarElements from '../nav-bar-elements'
-import { Link, NavLink, To, useNavigate } from 'react-router-dom'
-import NavBarWorkouts from './NavBarWorkouts'
-import React, { SyntheticEvent, useState } from 'react'
-import { Button, Flex, HStack, VStack } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { Button, Flex, VStack } from '@chakra-ui/react'
 
 export default function NavBar() {
   const navigate = useNavigate()

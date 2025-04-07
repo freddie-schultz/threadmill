@@ -1,15 +1,14 @@
 import { Link, useParams } from 'react-router-dom'
-import { useDeleteExercise, useWorkoutData } from '../apis/api'
+import { useWorkoutData } from '../apis/api'
 import ViewWorkoutList from './ViewWorkoutList'
 import { useState } from 'react'
 import ActiveWorkout from './ActiveWorkout'
-import { Button, Flex, Heading, HStack, Text } from '@chakra-ui/react'
+import { Button, Heading, HStack, Text } from '@chakra-ui/react'
 
 export default function ViewWorkout() {
   const { id } = useParams()
   const { data: workout, isPending, error } = useWorkoutData(Number(id))
   const [workoutActive, setWorkoutActive] = useState(false)
-  // const navigate = useNavigate()
 
   if (isPending) {
     return <p>Loading...</p>
