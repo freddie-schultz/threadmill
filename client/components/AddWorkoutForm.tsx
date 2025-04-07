@@ -30,11 +30,6 @@ export default function AddWorkoutForm(props: Props) {
       <Button m="1vw" p="2vw" fontSize="2.5vw" onClick={handleSubmit}>
         Add
       </Button>
-      {/* <form name="addWorkout" onSubmit={handleSubmit} style={{ marginTop: 20 }}>
-        <label htmlFor="name">Name: </label>
-        <input id="name" type="text" value={name} onChange={handleChange} />
-        &nbsp;<Button onClick={handleSubmit}>Add</Button>
-      </form> */}
     </>
   )
 }
