@@ -4,7 +4,7 @@ import { WorkoutWithExercises } from '../../models/workouts'
 import WorkoutDetailLine from './WorkoutDetailLine'
 import { useCreateExerciseInWorkout, useDeleteExerciseInWorkout, useEditExerciseInWorkout } from '../apis/api'
 import AddExerciseToWorkout from './AddExerciseToWorkout'
-import { Box, Button, Flex, ListItem, UnorderedList, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, ListItem, UnorderedList, Text, Divider } from '@chakra-ui/react'
 
 export default function ViewWorkoutList(props: WorkoutWithExercises) {
   const [showDetails, setShowDetails] = useState(false)
@@ -79,6 +79,7 @@ export default function ViewWorkoutList(props: WorkoutWithExercises) {
               {(showDetails || selectedWorkout === e.name) && (
                 <WorkoutDetailLine {...{ ...e, handleDelete, handleEdit }} key={`details${e.id}`} />
               )}
+              <Box bgColor="#353c82" marginTop="1vw" height="10px" borderRadius="5px"></Box>
             </div>
           )
         })}
