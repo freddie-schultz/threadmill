@@ -18,7 +18,7 @@ export default function NavBar() {
       <VStack>
         {navBarElements.map((e, i) => {
           return (
-            <Flex>
+            <Flex key={e.name}>
               {e.link == selectedUrl ? (
                 <Button
                   id={e.link}
@@ -31,6 +31,7 @@ export default function NavBar() {
                   onClick={() => {
                     handleNavigate(e.link)
                   }}
+                  key={e.name}
                 >
                   {e.name}
                 </Button>
@@ -46,6 +47,7 @@ export default function NavBar() {
                   onClick={() => {
                     handleNavigate(e.link)
                   }}
+                  key={e.name}
                 >
                   {e.name}
                 </Button>
