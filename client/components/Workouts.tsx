@@ -3,6 +3,7 @@ import { Workout, WorkoutData } from '../../models/workouts.ts'
 import { useCreateWorkout, useWorkoutData, useWorkouts } from '../apis/api.ts'
 import { useState } from 'react'
 import AddWorkoutForm from './AddWorkoutForm.tsx'
+import { Box, Button, Heading, ListItem, UnorderedList } from '@chakra-ui/react'
 
 export default function Workouts() {
   const { data: workouts, isPending, error } = useWorkouts()
@@ -32,17 +33,21 @@ export default function Workouts() {
 
   return (
     <>
-      <h2>Your Workouts</h2>
-      <ul>
+      <Box bgColor="#6e83fa" borderRadius="1vw" p="2vw" marginBottom="1vw">
+        <Heading fontSize="3vw">Your Workouts</Heading>
+      </Box>
+      <UnorderedList fontSize="2.5vw" m="2vw">
         {workouts.map((workout: Workout, i: number) => {
           return (
-            <li key={`workoutIndex${i}`}>
+            <ListItem marginBottom="2vw" key={`workoutIndex${i}`}>
               <Link to={`/workouts/${workout.id}`}>{workout.name}</Link>
-            </li>
+            </ListItem>
           )
         })}
-      </ul>
-      <button onClick={toggleShowAddWorkoutForm}>{showAddWorkoutForm ? 'Cancel' : 'Add workout'}</button>
+      </UnorderedList>
+      <Button fontSize="2vw" m="1vw" p="2vw" onClick={toggleShowAddWorkoutForm}>
+        {showAddWorkoutForm ? 'Cancel' : 'Add workout'}
+      </Button>
       {showAddWorkoutForm && <AddWorkoutForm handleAddWorkout={handleAddWorkout} />}
     </>
   )
