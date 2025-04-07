@@ -4,7 +4,7 @@ import { WorkoutWithExercises } from '../../models/workouts'
 import WorkoutDetailLine from './WorkoutDetailLine'
 import { useCreateExerciseInWorkout, useDeleteExerciseInWorkout, useEditExerciseInWorkout } from '../apis/api'
 import AddExerciseToWorkout from './AddExerciseToWorkout'
-import { Box, Button, Flex, ListItem, UnorderedList } from '@chakra-ui/react'
+import { Box, Button, Flex, ListItem, UnorderedList, Text } from '@chakra-ui/react'
 
 export default function ViewWorkoutList(props: WorkoutWithExercises) {
   const [showDetails, setShowDetails] = useState(false)
@@ -49,15 +49,17 @@ export default function ViewWorkoutList(props: WorkoutWithExercises) {
   return (
     <>
       <Flex marginBottom="2vw">
-        {showDetails ? (
+        {props.exercises.length > 0 && showDetails && (
           <Button fontSize="2vw" p="20px" bgColor="#8190D1" _hover={{ bg: '#8190D1' }} onClick={toggleDetails}>
             Hide All Details
           </Button>
-        ) : (
+        )}
+        {props.exercises.length > 0 && !showDetails && (
           <Button fontSize="2vw" p="20px" bgColor="#8190D1" _hover={{ bg: '#8190D1' }} onClick={toggleDetails}>
             Show All Details +
           </Button>
         )}
+        {props.exercises.length === 0 && <Text fontSize="2vw">Add an exercise below</Text>}
       </Flex>
       <UnorderedList>
         {props.exercises.map((e: ExerciseInWorkout, i: number) => {
