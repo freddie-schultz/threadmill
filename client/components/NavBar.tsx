@@ -6,7 +6,7 @@ import { Button, Flex, HStack, VStack } from '@chakra-ui/react'
 
 export default function NavBar() {
   const navigate = useNavigate()
-  const [selectedUrl, setSelectedUrl] = useState('/')
+  const [selectedUrl, setSelectedUrl] = useState(navBarElements[0].link)
 
   const handleNavigate = (url: string) => {
     setSelectedUrl(url)
