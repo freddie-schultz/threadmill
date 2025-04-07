@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { ExerciseInWorkout, NewExercise } from '../../models/exercises'
 import { WorkoutWithExercises } from '../../models/workouts'
 import WorkoutDetailLine from './WorkoutDetailLine'
@@ -10,7 +10,7 @@ import {
   useExercises,
 } from '../apis/api'
 import AddExerciseToWorkout from './AddExerciseToWorkout'
-import { Button, Flex } from '@chakra-ui/react'
+import { Box, Button, Flex, ListItem, UnorderedList } from '@chakra-ui/react'
 
 export default function ViewWorkoutList(props: WorkoutWithExercises) {
   const [showDetails, setShowDetails] = useState(false)
@@ -65,11 +65,11 @@ export default function ViewWorkoutList(props: WorkoutWithExercises) {
           </Button>
         )}
       </Flex>
-      <ul>
+      <UnorderedList>
         {props.exercises.map((e: ExerciseInWorkout, i: number) => {
           return (
             <div key={`div${e.id}`}>
-              <li
+              <ListItem
                 id={e.name}
                 className="workoutListButton"
                 role="button"
@@ -77,17 +77,18 @@ export default function ViewWorkoutList(props: WorkoutWithExercises) {
                 key={`exercise${e.id}`}
               >
                 {e.name}
-              </li>
+              </ListItem>
               {(showDetails || selectedWorkout === e.name) && (
                 <WorkoutDetailLine {...{ ...e, handleDelete, handleEdit }} key={`details${e.id}`} />
               )}
             </div>
           )
         })}
-      </ul>
-      <button onClick={toggleAddExerciseForm}>{showAddExerciseForm ? 'Cancel' : 'Add New Exercise'}</button>
-
-      {showAddExerciseForm && <AddExerciseToWorkout workoutId={props.id} handleAddExercise={handleAddExercise} />}
+      </UnorderedList>
+      <Box m="2vw" p="2vw" bgColor="#918a00" borderRadius="1vw">
+        <Button onClick={toggleAddExerciseForm}>{showAddExerciseForm ? 'Cancel' : 'Add New Exercise'}</Button>
+        {showAddExerciseForm && <AddExerciseToWorkout workoutId={props.id} handleAddExercise={handleAddExercise} />}
+      </Box>
     </>
   )
 }
