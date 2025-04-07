@@ -9,6 +9,7 @@ export default function Header() {
           borderRadius="1rem"
           border="1px solid black"
           p="5px"
+          m="1vw"
           paddingLeft="50px"
           paddingRight="50px"
         >

@@ -1,28 +1,59 @@
 import navBarElements from '../nav-bar-elements'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, To, useNavigate } from 'react-router-dom'
 import NavBarWorkouts from './NavBarWorkouts'
 import React, { SyntheticEvent, useState } from 'react'
+import { Button, Flex, HStack, VStack } from '@chakra-ui/react'
 
 export default function NavBar() {
+  const navigate = useNavigate()
+  const [selectedUrl, setSelectedUrl] = useState('/')
+
+  const handleNavigate = (url: string) => {
+    setSelectedUrl(url)
+    navigate(url)
+  }
+
   return (
-    <div className="flex1 navBarText">
-      <ul>
+    <>
+      <VStack>
         {navBarElements.map((e, i) => {
           return (
-            <NavLink to={e.link} key={`navLinkIndex${i}`}>
-              {({ isActive }) => {
-                return isActive ? (
-                  <li className="liActive" key={`liIndex${i}`}>
-                    {e.name}
-                  </li>
-                ) : (
-                  <li key={`liIndex${i}`}>{e.name}</li>
-                )
-              }}
-            </NavLink>
+            <Flex>
+              {e.link == selectedUrl ? (
+                <Button
+                  id={e.link}
+                  bgColor="#8190D1"
+                  _hover={{ bg: '#8190D1' }}
+                  fontSize="2vw"
+                  fontWeight="bold"
+                  p="2vw"
+                  m="0.5vw"
+                  onClick={() => {
+                    handleNavigate(e.link)
+                  }}
+                >
+                  {e.name}
+                </Button>
+              ) : (
+                <Button
+                  id={e.link}
+                  bgColor="#b3bdec"
+                  _hover={{ bg: '#b3bdec' }}
+                  fontSize="2vw"
+                  fontWeight="bold"
+                  p="2vw"
+                  m="0.5vw"
+                  onClick={() => {
+                    handleNavigate(e.link)
+                  }}
+                >
+                  {e.name}
+                </Button>
+              )}
+            </Flex>
           )
         })}
-      </ul>
-    </div>
+      </VStack>
+    </>
   )
 }
