@@ -3,7 +3,7 @@ import { useDeleteExercise, useWorkoutData } from '../apis/api'
 import ViewWorkoutList from './ViewWorkoutList'
 import { useState } from 'react'
 import ActiveWorkout from './ActiveWorkout'
-import { Button, Flex, HStack, Text } from '@chakra-ui/react'
+import { Button, Flex, Heading, HStack, Text } from '@chakra-ui/react'
 
 export default function ViewWorkout() {
   const { id } = useParams()
@@ -37,6 +37,7 @@ export default function ViewWorkout() {
           workoutActive ? 'Stop' : 'Start'
         } working out!`}</Button>
       </HStack>
+      <Heading m="2vw">{workout.name}</Heading>
 
       {workoutActive ? <ActiveWorkout {...workout} /> : <ViewWorkoutList {...workout} />}
     </>

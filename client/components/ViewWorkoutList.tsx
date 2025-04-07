@@ -56,11 +56,11 @@ export default function ViewWorkoutList(props: WorkoutWithExercises) {
     <>
       <Flex marginBottom="2vw">
         {showDetails ? (
-          <Button bgColor="#8190D1" _hover={{ bg: '#8190D1' }} onClick={toggleDetails}>
+          <Button fontSize="2vw" p="20px" bgColor="#8190D1" _hover={{ bg: '#8190D1' }} onClick={toggleDetails}>
             Hide All Details
           </Button>
         ) : (
-          <Button bgColor="#8190D1" _hover={{ bg: '#8190D1' }} onClick={toggleDetails}>
+          <Button fontSize="2vw" p="20px" bgColor="#8190D1" _hover={{ bg: '#8190D1' }} onClick={toggleDetails}>
             Show All Details +
           </Button>
         )}
