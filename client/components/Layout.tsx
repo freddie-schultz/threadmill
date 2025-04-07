@@ -3,13 +3,16 @@ import Header from './Header.tsx'
 import NavBar from './NavBar.tsx'
 import App from './App.tsx'
 import Footer from './Footer.tsx'
+import { Box } from '@chakra-ui/react'
 
 export default function Layout() {
   return (
     <>
-      <Header />
-      <App />
-      <Footer />
+      <Box bgColor="#ced4f0" height="100vw">
+        <Header />
+        <App />
+        <Footer />
+      </Box>
     </>
   )
 }
