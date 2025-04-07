@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useExercises } from '../apis/api'
 import { Exercise, NewExercise } from '../../models/exercises'
 import useCreateExerciseInWorkout from '../apis/hooks/use-create-exercise-in-workout'
-import { Box } from '@chakra-ui/react'
+import { Box, Button, Flex, FormControl, FormLabel, Input, Select } from '@chakra-ui/react'
 
 interface Props {
   workoutId: number
@@ -48,29 +48,73 @@ export default function AddExerciseToWorkout(props: Props) {
 
   return (
     <Box bgColor="#c7c25f" borderRadius="1vw" p="1vw" m="1vw">
-      <form name="addExercise" onSubmit={handleSubmit} style={{ marginTop: 20 }}>
-        <label htmlFor="exerciseId">Exercise: </label>
-        <select
-          style={{ width: '12vw' }}
-          id="exerciseId"
-          value={formState.exerciseId}
-          onChange={handleExerciseIdChange}
-        >
-          {allExercises.map((e: Exercise) => {
-            return (
-              <option key={e.id} value={e.id}>
-                {e.name}
-              </option>
-            )
-          })}
-        </select>
-        &nbsp;<label htmlFor="sets">Sets: </label>
-        <input style={{ width: '5vw' }} id="sets" type="text" value={formState.sets} onChange={handleChange} />
-        &nbsp;<label htmlFor="reps">Reps: </label>
-        <input style={{ width: '5vw' }} id="reps" type="text" value={formState.reps} onChange={handleChange} />
-        &nbsp;<label htmlFor="weight">Weight: </label>
-        <input style={{ width: '5vw' }} id="weight" type="text" value={formState.weight} onChange={handleChange} />
-        &nbsp;&nbsp;<button type="submit">Add</button>
+      <form name="addExercise" onSubmit={handleSubmit}>
+        <FormControl margin="2vw">
+          <FormLabel marginTop="1.5vw" fontSize="2vw" htmlFor="exerciseId">
+            Exercise:{' '}
+          </FormLabel>
+          <Select
+            bgColor="white"
+            width="40vw"
+            height="4vw"
+            fontSize="2vw"
+            id="exerciseId"
+            value={formState.exerciseId}
+            onChange={handleExerciseIdChange}
+          >
+            {allExercises.map((e: Exercise) => {
+              return (
+                <option key={e.id} value={e.id}>
+                  {e.name}
+                </option>
+              )
+            })}
+          </Select>
+          <FormLabel marginTop="1.5vw" fontSize="2vw" htmlFor="sets">
+            Sets:{' '}
+          </FormLabel>
+          <Input
+            bgColor="white"
+            width="10vw"
+            height="4vw"
+            fontSize="2vw"
+            id="sets"
+            type="text"
+            value={formState.sets}
+            onChange={handleChange}
+          />
+          <FormLabel marginTop="1.5vw" fontSize="2vw" htmlFor="reps">
+            Reps:{' '}
+          </FormLabel>
+          <Input
+            bgColor="white"
+            width="10vw"
+            height="4vw"
+            fontSize="2vw"
+            id="reps"
+            type="text"
+            value={formState.reps}
+            onChange={handleChange}
+          />
+          <FormLabel marginTop="1.5vw" fontSize="2vw" htmlFor="weight">
+            Weight:{' '}
+          </FormLabel>
+          <Input
+            bgColor="white"
+            width="10vw"
+            height="4vw"
+            fontSize="2vw"
+            id="weight"
+            type="text"
+            value={formState.weight}
+            onChange={handleChange}
+          />
+          <Flex marginTop="2vw">
+            <Button fontSize="2.5vw" p="2vw" bgColor="#8190D1" _hover={{ bg: '#8190D1' }} type="submit">
+              Add
+            </Button>
+          </Flex>
+        </FormControl>
       </form>
     </Box>
   )
