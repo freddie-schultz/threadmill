@@ -10,6 +10,7 @@ import {
   useExercises,
 } from '../apis/api'
 import AddExerciseToWorkout from './AddExerciseToWorkout'
+import { Button, Flex } from '@chakra-ui/react'
 
 export default function ViewWorkoutList(props: WorkoutWithExercises) {
   const [showDetails, setShowDetails] = useState(false)
@@ -53,9 +54,17 @@ export default function ViewWorkoutList(props: WorkoutWithExercises) {
 
   return (
     <>
-      <div className="detailsButton" role="button" onClick={toggleDetails}>
-        {showDetails ? 'Hide All Details' : 'Show All Details'}
-      </div>
+      <Flex marginBottom="2vw">
+        {showDetails ? (
+          <Button bgColor="#8190D1" _hover={{ bg: '#8190D1' }} onClick={toggleDetails}>
+            Hide All Details
+          </Button>
+        ) : (
+          <Button bgColor="#8190D1" _hover={{ bg: '#8190D1' }} onClick={toggleDetails}>
+            Show All Details +
+          </Button>
+        )}
+      </Flex>
       <ul>
         {props.exercises.map((e: ExerciseInWorkout, i: number) => {
           return (
