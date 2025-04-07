@@ -3,6 +3,7 @@ import { Workout, WorkoutData } from '../../models/workouts.ts'
 import { useCreateWorkout, useWorkoutData, useWorkouts } from '../apis/api.ts'
 import { useState } from 'react'
 import AddWorkoutForm from './AddWorkoutForm.tsx'
+import { Box, Heading } from '@chakra-ui/react'
 
 export default function Workouts() {
   const { data: workouts, isPending, error } = useWorkouts()
@@ -32,7 +33,9 @@ export default function Workouts() {
 
   return (
     <>
-      <h2>Your Workouts</h2>
+      <Box bgColor="#6e83fa" borderRadius="1vw" p="1vw" marginBottom="1vw">
+        <Heading>Your Workouts</Heading>
+      </Box>
       <ul>
         {workouts.map((workout: Workout, i: number) => {
           return (
