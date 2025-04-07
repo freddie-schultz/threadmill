@@ -4,6 +4,7 @@
  */
 export const up = function (knex) {
   return knex.schema.createTable('exercise_in_workout', (table) => {
+    table.integer('id').primary()
     table.integer('exercise_id').references('exercises.id')
     table.integer('workout_id').references('workouts.id')
     table.integer('reps')
