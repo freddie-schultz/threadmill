@@ -53,7 +53,6 @@ export default function WorkoutDetailLine(props: Props) {
       <table className="workoutDetailText" style={{ marginTop: 5, marginBottom: 15 }}>
         <tbody>
           <tr>
-            {/* <td style={{ width: '5vw' }}>{`Sets: ${props.sets}`}</td> */}
             <td style={{ width: '5vw' }}>
               <label htmlFor="sets">Sets: </label>
               {editing ? (
@@ -62,7 +61,6 @@ export default function WorkoutDetailLine(props: Props) {
                 props.sets
               )}
             </td>
-            {/* <td style={{ width: '6vw' }}>{props.timed ? `Time: ${props.reps}s` : `Reps: ${props.reps}`}</td> */}
             <td style={{ width: '6vw' }}>
               <label htmlFor="reps">{props.timed ? 'Time: ' : 'Reps: '}</label>
               {editing ? (
@@ -72,7 +70,6 @@ export default function WorkoutDetailLine(props: Props) {
               )}
               {props.timed ? 's' : ''}
             </td>
-            {/* <td style={{ width: '8vw' }}>{!props.timed && `Weight: ${props.weight}kg`}</td> */}
             <td style={{ width: '8vw' }}>
               {!props.timed && <label htmlFor="weight">Weight: </label>}
               {editing && !props.timed ? (
@@ -87,7 +84,6 @@ export default function WorkoutDetailLine(props: Props) {
                 !props.timed && props.weight
               )}
             </td>
-            {/* <td style={{ width: '11vw' }}>{`Break between sets: ${props.breakTime}s`}</td> */}
             <td style={{ width: '11vw' }}>
               <label htmlFor="breakTime">Break time: </label>
               {editing ? (
@@ -123,18 +119,4 @@ export default function WorkoutDetailLine(props: Props) {
       </table>
     </form>
   )
-
-  // return (
-  //   <ul>
-  //     <li style={{ fontSize: 12 }}>
-  //       {`Sets: ${props.sets}`}
-  //       <span className="bigSpace" />
-  //       {`Reps: ${props.reps}`}
-  //       <span className="bigSpace" />
-  //       {`Weight: ${props.weight}kg`}
-  //       <span className="bigSpace" />
-  //       {`Break between sets: ${props.breakTime}s`}
-  //     </li>
-  //   </ul>
-  // )
 }

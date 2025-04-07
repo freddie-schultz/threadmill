@@ -28,19 +28,6 @@ export default function ViewWorkout() {
 
   return (
     <>
-      {/* <table>
-        <tbody>
-          <tr>
-            <td style={{ width: 400 }}>
-              <h1>{workout.name}</h1>
-            </td>
-            <td>
-              <button onClick={toggleWorkoutActive}>{`${workoutActive ? 'Stop' : 'Start'} working out!`}</button>
-            </td>
-          </tr>
-        </tbody>
-      </table> */}
-
       <div className="flexDiv" style={{ alignItems: 'center' }}>
         <div style={{ width: 400 }}>
           <Link to="/workouts">Back</Link>

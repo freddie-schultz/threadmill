@@ -4,24 +4,6 @@ import NavBarWorkouts from './NavBarWorkouts'
 import React, { SyntheticEvent, useState } from 'react'
 
 export default function NavBar() {
-  const [selectedOption, setSelectedOption] = useState('home')
-
-  // return (
-  //   <div className="flex1">
-  //     <ul>
-  //       <li>
-  //         <NavLink to="/">Home</NavLink>
-  //       </li>
-  //       <li>
-  //         <NavLink to="/workouts">Workouts</NavLink>
-  //       </li>
-  //       <li>
-  //         <NavLink to="/stats">Stats</NavLink>
-  //       </li>
-  //     </ul>
-  //   </div>
-  // )
-
   return (
     <div className="flex1 navBarText">
       <ul>
