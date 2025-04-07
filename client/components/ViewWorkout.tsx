@@ -3,7 +3,7 @@ import { useDeleteExercise, useWorkoutData } from '../apis/api'
 import ViewWorkoutList from './ViewWorkoutList'
 import { useState } from 'react'
 import ActiveWorkout from './ActiveWorkout'
-import { Button, Flex, HStack } from '@chakra-ui/react'
+import { Button, Flex, HStack, Text } from '@chakra-ui/react'
 
 export default function ViewWorkout() {
   const { id } = useParams()
@@ -29,21 +29,14 @@ export default function ViewWorkout() {
 
   return (
     <>
-      <HStack>
-        <Link to="/workouts">Back</Link>
+      <HStack marginBottom="2vw">
+        <Link to="/workouts">
+          <Text fontSize="1.5vw">⬅️ Back</Text>
+        </Link>
         <Button marginRight="auto" marginLeft="30vw" onClick={toggleWorkoutActive}>{`${
           workoutActive ? 'Stop' : 'Start'
         } working out!`}</Button>
       </HStack>
-      <div className="flexDiv" style={{ alignItems: 'center' }}>
-        <div style={{ width: 400 }}>
-          <Link to="/workouts">Back</Link>
-          <h1>{workout.name}</h1>
-        </div>
-        <div>
-          <button onClick={toggleWorkoutActive}>{`${workoutActive ? 'Stop' : 'Start'} working out!`}</button>
-        </div>
-      </div>
 
       {workoutActive ? <ActiveWorkout {...workout} /> : <ViewWorkoutList {...workout} />}
     </>
