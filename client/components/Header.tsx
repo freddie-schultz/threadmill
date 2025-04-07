@@ -1,7 +1,21 @@
+import { Box, Center, Flex } from '@chakra-ui/react'
+
 export default function Header() {
   return (
-    <div className="flexDiv bb centerDiv" style={{ borderRadius: 5 }}>
-      <h1 className="marginAuto fontTektur headerText">The Threadmill</h1>
-    </div>
+    <>
+      <Center marginBottom="3vw">
+        <Box
+          bgColor="#8893c7"
+          borderRadius="1rem"
+          border="1px solid black"
+          p="5px"
+          m="1vw"
+          paddingLeft="50px"
+          paddingRight="50px"
+        >
+          <h1 className="marginAuto fontTektur headerText">The Threadmill</h1>
+        </Box>
+      </Center>
+    </>
   )
 }
