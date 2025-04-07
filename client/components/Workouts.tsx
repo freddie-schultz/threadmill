@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Workout, WorkoutData } from '../../models/workouts.ts'
-import { useCreateWorkout, useWorkoutData, useWorkouts } from '../apis/api.ts'
+import { useCreateWorkout, useWorkouts } from '../apis/api.ts'
 import { useState } from 'react'
 import AddWorkoutForm from './AddWorkoutForm.tsx'
 import { Box, Button, Heading, ListItem, UnorderedList } from '@chakra-ui/react'

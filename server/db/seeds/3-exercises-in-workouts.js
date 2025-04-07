@@ -4,34 +4,34 @@
  */
 
 const workout1 = [
-  { exercise_id: 1, workout_id: 1, reps: 12, sets: 4, weight: 40, break_time: 60 },
-  { exercise_id: 2, workout_id: 1, reps: 10, sets: 4, weight: 35, break_time: 60 },
-  { exercise_id: 3, workout_id: 1, reps: 12, sets: 4, weight: 20, break_time: 60 },
-  { exercise_id: 4, workout_id: 1, reps: 12, sets: 4, weight: 25, break_time: 60 },
-  { exercise_id: 5, workout_id: 1, reps: 12, sets: 4, weight: 30, break_time: 60 },
-  { exercise_id: 6, workout_id: 1, reps: 12, sets: 4, weight: 30, break_time: 60 },
-  { exercise_id: 7, workout_id: 1, reps: 15, sets: 4, weight: 45, break_time: 60 },
-  { exercise_id: 8, workout_id: 1, reps: 12, sets: 4, weight: 25, break_time: 60 },
-  { exercise_id: 9, workout_id: 1, reps: 12, sets: 4, weight: 25, break_time: 60 },
-  { exercise_id: 10, workout_id: 1, reps: 12, sets: 4, weight: 15, break_time: 60 },
+  { id: 1, exercise_id: 1, workout_id: 1, reps: 12, sets: 4, weight: 40, break_time: 60 },
+  { id: 2, exercise_id: 2, workout_id: 1, reps: 10, sets: 4, weight: 35, break_time: 60 },
+  { id: 3, exercise_id: 3, workout_id: 1, reps: 12, sets: 4, weight: 20, break_time: 60 },
+  { id: 4, exercise_id: 4, workout_id: 1, reps: 12, sets: 4, weight: 25, break_time: 60 },
+  { id: 5, exercise_id: 5, workout_id: 1, reps: 12, sets: 4, weight: 30, break_time: 60 },
+  { id: 6, exercise_id: 6, workout_id: 1, reps: 12, sets: 4, weight: 30, break_time: 60 },
+  { id: 7, exercise_id: 7, workout_id: 1, reps: 15, sets: 4, weight: 45, break_time: 60 },
+  { id: 8, exercise_id: 8, workout_id: 1, reps: 12, sets: 4, weight: 25, break_time: 60 },
+  { id: 9, exercise_id: 9, workout_id: 1, reps: 12, sets: 4, weight: 25, break_time: 60 },
+  { id: 10, exercise_id: 10, workout_id: 1, reps: 12, sets: 4, weight: 15, break_time: 60 },
 ]
 
 const workout2 = [
-  { exercise_id: 15, workout_id: 2, reps: 300, sets: 1, weight: 0, break_time: 60 },
-  { exercise_id: 11, workout_id: 2, reps: 15, sets: 4, weight: 0, break_time: 60 },
-  { exercise_id: 13, workout_id: 2, reps: 16, sets: 4, weight: 0, break_time: 60 },
-  { exercise_id: 12, workout_id: 2, reps: 30, sets: 4, weight: 0, break_time: 60 },
-  { exercise_id: 14, workout_id: 2, reps: 10, sets: 4, weight: 10, break_time: 60 },
+  { id: 11, exercise_id: 15, workout_id: 2, reps: 300, sets: 1, weight: 0, break_time: 60 },
+  { id: 12, exercise_id: 11, workout_id: 2, reps: 15, sets: 4, weight: 0, break_time: 60 },
+  { id: 13, exercise_id: 13, workout_id: 2, reps: 16, sets: 4, weight: 0, break_time: 60 },
+  { id: 14, exercise_id: 12, workout_id: 2, reps: 30, sets: 4, weight: 0, break_time: 60 },
+  { id: 15, exercise_id: 14, workout_id: 2, reps: 10, sets: 4, weight: 10, break_time: 60 },
 ]
 
 const workout3 = [
-  { exercise_id: 18, workout_id: 3, reps: 10, sets: 4, weight: 0, break_time: 60 },
-  { exercise_id: 16, workout_id: 3, reps: 10, sets: 4, weight: 10, break_time: 60 },
-  { exercise_id: 17, workout_id: 3, reps: 10, sets: 4, weight: 3, break_time: 60 },
-  { exercise_id: 19, workout_id: 3, reps: 10, sets: 4, weight: 3, break_time: 60 },
-  { exercise_id: 20, workout_id: 3, reps: 10, sets: 4, weight: 3, break_time: 60 },
-  { exercise_id: 21, workout_id: 3, reps: 10, sets: 4, weight: 0, break_time: 60 },
-  { exercise_id: 10, workout_id: 3, reps: 10, sets: 4, weight: 15, break_time: 60 },
+  { id: 16, exercise_id: 18, workout_id: 3, reps: 10, sets: 4, weight: 0, break_time: 60 },
+  { id: 17, exercise_id: 16, workout_id: 3, reps: 10, sets: 4, weight: 10, break_time: 60 },
+  { id: 18, exercise_id: 17, workout_id: 3, reps: 10, sets: 4, weight: 3, break_time: 60 },
+  { id: 19, exercise_id: 19, workout_id: 3, reps: 10, sets: 4, weight: 3, break_time: 60 },
+  { id: 20, exercise_id: 20, workout_id: 3, reps: 10, sets: 4, weight: 3, break_time: 60 },
+  { id: 21, exercise_id: 21, workout_id: 3, reps: 10, sets: 4, weight: 0, break_time: 60 },
+  { id: 22, exercise_id: 10, workout_id: 3, reps: 10, sets: 4, weight: 15, break_time: 60 },
 ]
 
 export const seed = async function (knex) {

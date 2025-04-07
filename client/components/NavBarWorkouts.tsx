@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Workout } from '../../models/workouts.ts'
-import { useWorkoutData, useWorkouts } from '../apis/api.ts'
+import { useWorkouts } from '../apis/api.ts'
 
 export default function NavBarWorkouts() {
   const { data: workouts, isPending, error } = useWorkouts()
