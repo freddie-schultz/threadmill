@@ -66,6 +66,8 @@ export default function ViewWorkoutList(props: WorkoutWithExercises) {
           return (
             <div key={`div${e.id}`}>
               <ListItem
+                marginTop="1vw"
+                fontSize="2vw"
                 id={e.name}
                 className="workoutListButton"
                 role="button"

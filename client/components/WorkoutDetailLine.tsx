@@ -1,6 +1,7 @@
 import { E } from 'vitest/dist/chunks/reporters.d.CqBhtcTq.js'
 import { ExerciseInWorkout, NewExercise } from '../../models/exercises'
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
+import { Button, Flex, FormControl, FormLabel, HStack, Input, Spacer, Text } from '@chakra-ui/react'
 
 interface Props extends ExerciseInWorkout {
   handleDelete: (id: number) => void
@@ -49,73 +50,80 @@ export default function WorkoutDetailLine(props: Props) {
 
   return (
     <form name="editExercise">
-      <table className="workoutDetailText" style={{ marginTop: 5, marginBottom: 15 }}>
-        <tbody>
-          <tr>
-            <td style={{ width: '5vw' }}>
-              <label htmlFor="sets">Sets: </label>
-              {editing ? (
-                <input id="sets" type="text" value={formState.sets} onChange={handleChange} style={{ width: '2vw' }} />
-              ) : (
-                props.sets
-              )}
-            </td>
-            <td style={{ width: '6vw' }}>
-              <label htmlFor="reps">{props.timed ? 'Time: ' : 'Reps: '}</label>
-              {editing ? (
-                <input id="reps" type="text" value={formState.reps} onChange={handleChange} style={{ width: '2vw' }} />
-              ) : (
-                props.reps
-              )}
-              {props.timed ? 's' : ''}
-            </td>
-            <td style={{ width: '8vw' }}>
-              {!props.timed && <label htmlFor="weight">Weight: </label>}
-              {editing && !props.timed ? (
-                <input
-                  id="weight"
-                  type="text"
-                  value={formState.weight}
-                  onChange={handleChange}
-                  style={{ width: '2vw' }}
-                />
-              ) : (
-                !props.timed && props.weight
-              )}
-            </td>
-            <td style={{ width: '11vw' }}>
-              <label htmlFor="breakTime">Break time: </label>
-              {editing ? (
-                <input
-                  id="breakTime"
-                  type="text"
-                  value={formState.breakTime}
-                  onChange={handleChange}
-                  style={{ width: '2vw' }}
-                />
-              ) : (
-                props.breakTime
-              )}
+      <FormControl marginTop="1vw">
+        <HStack>
+          <Flex marginRight="2vw">
+            <FormLabel>Sets:</FormLabel>
+            <Input
+              marginRight="2vw"
+              bgColor={editing ? 'white' : '#ced4f0'}
+              disabled={!editing}
+              _disabled={{ fontcolor: 'black' }}
+              id="sets"
+              type="text"
+              width="80px"
+              value={formState.sets}
+              onChange={handleChange}
+            />
+            <FormLabel>Reps:</FormLabel>
+            <Input
+              marginRight="2vw"
+              bgColor={editing ? 'white' : '#ced4f0'}
+              disabled={!editing}
+              _disabled={{ fontcolor: 'black' }}
+              id="reps"
+              type="text"
+              width="80px"
+              value={formState.reps}
+              onChange={handleChange}
+            />
+            <FormLabel>Weight:</FormLabel>
+            <Input
+              marginRight="2px"
+              bgColor={editing ? 'white' : '#ced4f0'}
+              disabled={!editing}
+              _disabled={{ fontcolor: 'black' }}
+              id="weight"
+              type="text"
+              width="80px"
+              value={formState.weight}
+              onChange={handleChange}
+            />
+            <Text marginRight="2vw" fontSize="1.5vw">
+              kg
+            </Text>
+            <FormLabel>Break time:</FormLabel>
+            <Input
+              marginRight="2px"
+              bgColor={editing ? 'white' : '#ced4f0'}
+              disabled={!editing}
+              _disabled={{ fontcolor: 'black' }}
+              id="breakTime"
+              type="text"
+              width="80px"
+              value={formState.breakTime}
+              onChange={handleChange}
+            />
+            <Text marginRight="2vw" fontSize="1.5vw">
               s
-            </td>
-
-            <td style={{ width: '3vw' }}>
-              {editing ? (
-                <button onClick={handleClickSave}>Save</button>
-              ) : (
-                <button onClick={handleClickEdit}>Edit</button>
-              )}
-            </td>
-            <td>
-              {editing ? (
-                <button onClick={handleClickCancel}>Cancel</button>
-              ) : (
-                <button onClick={handleClickDelete}>Delete</button>
-              )}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </Text>
+          </Flex>
+          {editing ? (
+            <>
+              <Button onClick={handleClickSave}>Save</Button>
+              <Button onClick={handleClickCancel}>Cancel</Button>
+            </>
+          ) : (
+            <>
+              <Button onClick={handleClickEdit}>Edit</Button>
+              <Spacer />
+              <Button marginRight="10vw" onClick={handleClickDelete}>
+                Delete
+              </Button>
+            </>
+          )}
+        </HStack>
+      </FormControl>
     </form>
   )
 }
